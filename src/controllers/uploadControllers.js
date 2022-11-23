@@ -1,13 +1,15 @@
-
+require("dotenv").config();
 const AWS = require('aws-sdk')
 
 AWS.config.update({
-    accessKeyId: 'AKIAT6NJKH25AYOTNCP4',
-    secretAccessKey: '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'
+    accessKeyId: process.env.SECRET_KEY_ID,
+    secretAccessKey: process.env.SECRET_ACCESS_KEY
 })
 
-const S3_BUCKET ='cn-uploader';
-const REGION ='eu-west-2';
+console.log(process.env.SECRET_ACCESS_KEY)
+
+const S3_BUCKET = process.env.BUCKET;
+const REGION = process.env.REGION;
 const URL_EXPIRATION_TIME = 60; // in seconds
 
 const myBucket = new AWS.S3({
